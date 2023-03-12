@@ -1,97 +1,39 @@
-/* Original Background*/
-/* body {
-	background-color: #ffffff;
-	font-family: 'Courier New', Courier, monospace;
-	font-size: 14px;
-	color: #000000;
-	margin: 0;
-	padding: 0;
-} */
-	
-		body {
-			background-color: #ffffff;
-			font-family: 'Courier New', Courier, monospace;
-			font-size: 14px;
-			color: #000000;
-			margin: 0;
-			padding: 0;
-		}
-		
-		#header {
-			background-color: #000000;
-			padding: 10px;
-		}
-		
-		#header h1 {
-			margin: 0;
-			font-size: 24px;
-			color: #ffffff;
-		}
-		
-		#container {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 50px;
-		}
-		
-		#container h2 {
-			font-size: 18px;
-			margin: 20px 0 10px;
-			color: #000000;
-		}
-		
-		#container p {
-			margin: 0 0 10px;
-		}
-		
-		#footer {
-			background-color: #000000;
-			color: #ffffff;
-			padding: 50px;
-			text-align: center;
-			font-size: 12px;
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-		}
+body {
+  background-color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
 
 #header {
-	background-color: #000000;
-	padding: 10px;
+  background-color: #000000;
+  padding: 10px;
 }
 
 #header h1 {
-	margin: 0;
-	font-size: 24px;
-	color: #ffffff;
+  margin: 0;
+  font-size: 24px;
+  color: #ffffff;
 }
 
 #container {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 #container h2 {
-	font-size: 18px;
-	margin: 20px 0 10px;
-	color: #000000;
+  font-size: 18px;
+  margin: 20px 0 10px;
+  color: #000000;
 }
 
 #container p {
-	margin: 0 0 10px;
+  margin: 0 0 10px;
 }
 
-#footer {
-	background-color: #000000;
-	color: #ffffff;
-	padding: 10px;
-	text-align: center;
-	font-size: 12px;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-}
 
 /* Adding Box Around all the Pokemon Box */
 #pokemon-info {
@@ -100,7 +42,6 @@
 }
 
 /* Styling the symbols */
-
 .social-icons i.fab.fa-linkedin {
   font-size: 30px;
 }
@@ -109,3 +50,28 @@
   font-size: 30px;
 }
 
+/* Media queries for responsiveness */
+@media screen and (max-width: 600px) {
+  #container {
+    padding: 10px;
+  }
+  
+  #container h2 {
+    font-size: 16px;
+  }
+  
+}
+
+@media screen and (max-width: 400px) {
+  #header h1 {
+    font-size: 20px;
+  }
+  
+  #container h2 {
+    font-size: 14px;
+  }
+  
+  #container p {
+    font-size: 12px;
+  }
+}
