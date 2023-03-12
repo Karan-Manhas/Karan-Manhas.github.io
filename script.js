@@ -15,9 +15,9 @@ pokeballButton.addEventListener('click', async () => {
 
     pokemonInfo.innerHTML = `
       <p>Name: ${data.name}</p>
-      <p>Height: ${data.height}</p>
-      <p>Weight: ${data.weight}</p>
-      <p>Ability: ${abilities}</p>
+      <p>Height(feet): ${data.height}</p>
+      <p>Weight(kilograms): ${data.weight}</p>
+      <p>Abilities: ${abilities}</p>
 
       <img src="${data.sprites.front_default}" alt="${data.name}">
     `
