@@ -13,10 +13,16 @@ pokeballButton.addEventListener('click', async () => {
       .map(ability => ability.ability.name)
       .join(', ') // Get all the abilities and join them with a comma
 
+    // Convert height from decimeters to meters
+    const heightInMeters = data.height / 10
+
+    // Convert weight from hectograms to kilograms
+    const weightInKilograms = data.weight / 10
+
     pokemonInfo.innerHTML = `
       <p>Name: ${data.name}</p>
-      <p>Height(feet): ${data.height}</p>
-      <p>Weight(kilograms): ${data.weight}</p>
+      <p>Height(meters): ${heightInMeters}</p>
+      <p>Weight(kilograms): ${weightInKilograms}</p>
       <p>Abilities: ${abilities}</p>
 
       <img src="${data.sprites.front_default}" alt="${data.name}">
