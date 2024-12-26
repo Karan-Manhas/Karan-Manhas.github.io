@@ -161,3 +161,54 @@ footer a:hover {
 .social-icons a:hover {
     transform: translateY(-5px);
 }
+
+#case-studies li {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#case-studies li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#header {
+    background: linear-gradient(to top, #ffffff, #ffffff);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.section-divider {
+    height: 50px;
+    background: linear-gradient(to right, #0071e3, #005bb5);
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    animation: dividerSlide 2s ease-in-out infinite;
+}
+
+@keyframes dividerSlide {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10%);
+    }
+}
+
+#scroll-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background-color: #0071e3;
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+#portfolio-logo {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between logo and text */
+    vertical-align: middle; /* Align vertically with the text */
+    display: inline-flexbox;
+}
+
