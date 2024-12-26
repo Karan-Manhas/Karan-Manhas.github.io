@@ -1,41 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
-<title>My Portfolio</title>
-<link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Karan Manhas - Portfolio</title>
+  <style>
+    body {
+      background-color: #000000;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 16px;
+      color: #00ff00;
+      margin: 0;
+      padding: 0;
+    }
+
+    #header {
+      background-color: #000000;
+      padding: 10px;
+    }
+
+    #header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #00ff00;
+      text-align: center;
+    }
+
+    #container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    #container h2 {
+      font-size: 20px;
+      margin: 20px 0 10px;
+      color: #00ff00;
+    }
+
+    #container p, #container li {
+      margin: 0 0 10px;
+      color: #ffffff;
+    }
+
+    .social-icons i {
+      font-size: 30px;
+      color: #ffffff;
+      margin-right: 10px;
+    }
+
+    #case-studies {
+      box-shadow: 0px 0px 10px #00ff00;
+      padding: 20px;
+      background-color: #000000;
+      border-radius: 10px;
+    }
+
+    /* Media queries for responsiveness */
+    @media screen and (max-width: 600px) {
+      #container {
+        padding: 10px;
+      }
+
+      #container h2 {
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      #header h1 {
+        font-size: 20px;
+      }
+
+      #container h2 {
+        font-size: 14px;
+      }
+
+      #container p {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-	<div id="header">
-		<h1>My Portfolio</h1>
-	</div>
+  <div id="header">
+    <h1>Karan Manhas - Portfolio</h1>
+  </div>
 
-<div id="container">
-	<h2>About Me</h2>
-	<p>Hello, my name is Karan. I am a Data Engineer.</p>
-	<p>My experience ranges from Data Layer Design to ETL pipeline implementations and designing Data Architecture</p>
-	<p>The PokeAPI is an example of API handling. Test it to see which one you are!</p>
-	<h2>Programming Skills</h2>
-	<li>Python</li>
-	<li>Java</li>
-	<li>SQL</li>
-	<li>Javascript</li>	
-	<h2>Contact Me</h2>
-	<div class="social-icons">
- 	<a href="https://www.linkedin.com/in/karan-manhas/"><i class="fab fa-linkedin"></i></a>
- 	<a href="https://github.com/Karan-Manhas"><i class="fab fa-github"></i></a>
-	</div> </p>
+  <div id="container">
+    <h2>About Me</h2>
+    <p>Hi, I am Karan, an MSc Computer Science student with expertise in Machine Learning, Artificial Intelligence, and Data Engineering.</p>
 
-	
-	<h2>What Pokemon are you?</h2>
-	<p> Click the below button and see what your starter is!</p>
-	<button id="pokeball">Click me!</button>
-	<div id="pokemon-info"></div>
-	<script type="text/javascript" src="script.js"></script>
+    <h2>Case Studies</h2>
+    <div id="case-studies">
+      <ul>
+        <li><strong>Naive Bayes for Email Spam Detection:</strong> Built a classifier to identify spam emails using NLP techniques and probabilistic models.</li>
+        <li><strong>ResNet50 and CNNs for Age and Gender Classification:</strong> Developed a dual-purpose deep learning model achieving high accuracy on the UTKFace dataset.</li>
+        <li><strong>Serverless ETL Implementations:</strong> Automated data pipelines leveraging AWS Lambda for cost-efficient and scalable data processing.</li>
+        <li><strong>Kimball Data Modeling:</strong> Designed and implemented dimensional data models for efficient querying and reporting in enterprise environments.</li>
+        <li><strong>Apache Airflow:</strong> Orchestrated complex workflows, integrating APIs and databases for end-to-end data solutions.</li>
+        <li><strong>Flask Development:</strong> Created dynamic web applications, including dashboards and APIs, to support real-time data visualization and decision-making.</li>
+        <li><strong>API Handling:</strong> Implemented robust API integrations for data ingestion and transformation, handling both REST and GraphQL endpoints.</li>
+      </ul>
+    </div>
 
+    <h2>Skills</h2>
+    <ul>
+      <li>Python, Java, SQL, JavaScript</li>
+      <li>Data Engineering: ETL, Redshift, Kafka</li>
+      <li>Machine Learning: Scikit-learn, TensorFlow</li>
+      <li>Web Development: Flask, Docker</li>
+    </ul>
 
-</div>
-
+    <h2>Contact Me</h2>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/karan-manhas/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Karan-Manhas" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
 </body>
 </html>

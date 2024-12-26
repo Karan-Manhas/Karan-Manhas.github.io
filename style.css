@@ -1,83 +1,93 @@
 body {
-background-color: #000000;
-font-family: 'Press Start 2P', cursive;
-font-size: 16px; 
-color: #00ff00; 
-margin: 0;
-padding: 0;
-}
-
-#header {
-background-color: #000000;
-padding: 10px;
-}
-
-#header h1 {
-margin: 0;
-font-size: 24px;
-color: #00ff00; 
-text-align: center; 
-}
-
-#container {
-max-width: 800px;
-margin: 0 auto;
-padding: 20px;
-}
-
-#container h2 {
-font-size: 20px; 
-margin: 20px 0 10px;
-color: #00ff00; 
-}
-
-#container p {
-margin: 0 0 10px;
-color: #ffffff; /* change p text color to white */
-}
-
-
-#pokemon-info {
-box-shadow: 0px 0px 10px #00ff00; 
-padding: 10px;
-background-color: #000000; 
-}
-
-
-.social-icons i.fab.fa-linkedin {
-font-size: 30px;
-color: #ffffff; 
-}
-
-.social-icons i.fab.fa-github {
-font-size: 30px;
-color: #ffffff; /* change social icon color to green */
-}
-
-/* Media queries for responsiveness */
-@media screen and (max-width: 600px) {
-#container {
-padding: 10px;
-}
-
-#container h2 {
-font-size: 16px;
-color: #00ff00;
-}
-
-}
-
-@media screen and (max-width: 400px) {
-#header h1 {
-font-size: 20px;
-color: #ffffff;
-}
-
-#container h2 {
-font-size: 14px;
-}
-
-#container p {
-font-size: 12px;
-}
-}
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px; 
+    color: #333333; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  #header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  #header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #333333; 
+  }
+  
+  #container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #container h2 {
+    font-size: 24px; 
+    margin: 20px 0 10px;
+    color: #333333; 
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+  }
+  
+  #container p, #container li {
+    margin: 0 0 10px;
+    color: #666666;
+    line-height: 1.6;
+  }
+  
+  .social-icons i {
+    font-size: 24px;
+    color: #4CAF50; 
+    margin-right: 10px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons i:hover {
+    color: #333333;
+  }
+  
+  #case-studies {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 600px) {
+    #container {
+      padding: 15px;
+    }
+  
+    #container h2 {
+      font-size: 20px;
+    }
+  
+    #header h1 {
+      font-size: 24px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    #header h1 {
+      font-size: 20px;
+    }
+  
+    #container h2 {
+      font-size: 18px;
+    }
+  
+    #container p {
+      font-size: 14px;
+    }
+  }
+  
