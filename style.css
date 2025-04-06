@@ -1,244 +1,143 @@
-/* Base styles */
-body {
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1d1d1f;
+    --card-bg-color: #f9f9f9;
+    --accent-color: #0071e3;
+    --button-bg: var(--accent-color);
+    --button-text: white;
+  }
+  
+  body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #1d1d1f;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to top, #b3b3b3, #ffffff);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     text-rendering: optimizeLegibility;
-}
-
-@keyframes backgroundTransition {
-    0% {
-        background: linear-gradient(to bottom, #b3b3b3, #ffffff);
-    }
-    100% {
-        background: linear-gradient(to bottom, #ffffff, #b3b3b3);
-    }
-}
-
-a {
-    color: #0071e3;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --card-bg-color: #1e1e1e;
+    --accent-color: #90caf9;
+    --button-bg: var(--text-color);
+    --button-text: var(--bg-color);
+  }
+  
+  /* Links */
+  a {
+    color: var(--accent-color);
     text-decoration: none;
     font-weight: 500;
-}
-
-a:hover {
+  }
+  
+  a:hover {
     text-decoration: underline;
-}
-
-/* Header styles */
-#header {
-    background-color: #fff;
-    border-bottom: 1px solid #d2d2d7;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-#header h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #1d1d1f;
-    margin: 0;
-}
-
-/* Container styles */
-#container {
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: 40px auto;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#container h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #d2d2d7;
-    padding-bottom: 10px;
-}
-
-#container p {
-    line-height: 1.8;
-    color: #515154;
-}
-
-/* Case studies */
-#case-studies ul {
-    list-style: none;
-    padding: 0;
-}
-
-#case-studies li {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#case-studies li strong {
-    font-size: 1rem;
-    color: #1d1d1f;
-}
-
-/* Skills list */
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 20px 0;
-}
-
-li {
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-/* Social icons */
-.social-icons {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-    font-size: 3.5rem;
-    color: #0071e3;
-    transition: color 0.2s;
-}
-
-.social-icons a:hover {
-    color: #005bb5;
-}
-
-/* Footer styles */
-footer {
-    background-color: #f5f5f7;
-    border-top: 1px solid #d2d2d7;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 14px;
-    color: #6e6e73;
-    margin-top: 40px;
-}
-
-footer a {
-    color: #0071e3;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Add responsive styles */
-@media (max-width: 768px) {
-    #container {
-        padding: 20px;
-    }
-
-    #header h1 {
-        font-size: 2rem;
-    }
-
-    #container h2 {
-        font-size: 1.5rem;
-    }
-
-    .social-icons a {
-        font-size: 1.2rem;
-    }
-}
-
-.social-icons a {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.social-icons a:hover {
-    transform: translateY(-5px);
-}
-
-#case-studies li {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#case-studies li:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-#header {
-    background: linear-gradient(to top, #ffffff, #ffffff);
-    color: white;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.section-divider {
-    height: 50px;
-    background: linear-gradient(to right, #0071e3, #005bb5);
-    clip-path: polygon(0 0, 100% 100%, 0 100%);
-    animation: dividerSlide 2s ease-in-out infinite;
-}
-
-@keyframes dividerSlide {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-10%);
-    }
-}
-
-#scroll-bar {
+  }
+  
+  /* Scrollbar progress bar */
+  #scroll-bar {
     position: fixed;
     top: 0;
     left: 0;
     height: 5px;
-    background-color: #0071e3;
+    background-color: var(--accent-color);
     width: 0%;
     z-index: 1000;
     transition: width 0.1s ease;
-}
-
-#portfolio-logo {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Maintain aspect ratio */
-    margin-right: 20px; /* Space between logo and text */
-    vertical-align: middle; /* Align vertically with the text */
-    display: inline-flexbox;
-}
-
-.case-study-button {
+  }
+  
+  /* Header */
+  #header {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-bottom: 1px solid #d2d2d7;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: none;
+  }
+  
+  #header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  /* Container */
+  #container {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+  }
+  
+  #container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #d2d2d7;
+    padding-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  #container p {
+    line-height: 1.8;
+  }
+  
+  /* Case Studies */
+  #case-studies ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #case-studies li {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #case-studies li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  #case-studies h3 {
+    font-size: 1.5rem;
+    margin-top: 40px;
+    color: var(--accent-color);
+    border-left: 5px solid var(--accent-color);
+    padding-left: 10px;
+  }
+  
+  /* Buttons */
+  .case-study-button {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 15px;
-    background-color: #0071e3;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     font-weight: bold;
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.case-study-button:hover {
+  }
+  
+  .case-study-button:hover {
     background-color: #005bb5;
     transform: translateY(-2px);
-}
-
-#case-studies h3 {
-    font-size: 1.5rem;
-    margin-top: 40px;
-    color: #0071e3;
-    border-left: 5px solid #0071e3;
-    padding-left: 10px;
-}
-
-
-.featured-tag {
+  }
+  
+  /* Featured tag */
+  .featured-tag {
     background-color: #ffcc00;
     color: #1d1d1f;
     font-size: 0.65rem;
@@ -247,4 +146,72 @@ footer a:hover {
     margin-left: 8px;
     font-weight: bold;
     text-transform: uppercase;
-}
+  }
+  
+  /* Skills and Lists */
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 20px 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  /* Social Icons */
+  .social-icons {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    transition: color 0.2s, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #005bb5;
+    transform: translateY(-5px);
+  }
+  
+  /* Dark Mode Toggle Button */
+  #dark-mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    color: var(--text-color);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    #container {
+      padding: 20px;
+    }
+  
+    #header h1 {
+      font-size: 2rem;
+    }
+  
+    #container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .social-icons a {
+      font-size: 1.2rem;
+    }
+  }
+
+  #portfolio-logo {
+    width: 5%;
+    height: auto;
+  }
+  
