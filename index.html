@@ -1,33 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<script src="script.js"></script>
+    <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Karan Manhas - Portfolio</title>
-	<div id="scroll-bar"></div>
+    <div id="scroll-bar"></div>
 </head>
+
 <body>
     <div id="header">
-		
+
         <h1>Karan Manhas - Portfolio <img src="riolu.gif" alt="Portfolio Logo" id="portfolio-logo"></h1>
     </div>
 
     <div id="container">
         <h2>About Me</h2>
-        <p>Hi there, I am Karan, an MSc Computer Science student with expertise in Machine Learning, Artificial Intelligence, and Data Engineering.</p>
+        <p>
+            Hi there, I’m Karan — an MSc Computer Science student passionate about building intelligent systems and
+            scalable data solutions.
+            My work blends Machine Learning, Artificial Intelligence, and Data Engineering to solve real-world problems
+            using clean, efficient code.
+            <br><br>
+            I’ve developed deep learning models for tasks like age and gender classification using ResNet50, and built
+            spam classifiers with Naive Bayes and NLP pipelines.
+            My data engineering experience includes orchestrating serverless ETL pipelines with AWS Lambda, modeling
+            dimensional data warehouses using Kimball methodology, and creating real-time dashboards with Redshift,
+            Flask, and Docker.
+            <br><br>
+            I’m equally comfortable designing backend workflows. I’ve implemented complex data pipelines with Apache
+            Airflow, integrated APIs for data ingestion, and automated data flows to enhance operational efficiency.
+            My current focus is on cryptographic algorithm performance, and I’m exploring secure, low-level
+            implementations in C++ for my MSc dissertation.
+            Whether it's building AI models, optimizing database performance, or automating data flows, I bring a
+            builder's mindset with an engineer’s precision.
+        </p>
 
         <h2>Case Studies</h2>
         <div id="case-studies">
             <ul>
-                <li><i class="fas fa-envelope"></i> <strong>Naive Bayes for Email Spam Detection:</strong> Built a classifier to identify spam emails using NLP techniques and probabilistic models.</li>
-                <li><i class="fas fa-user"></i> <strong>ResNet50 and CNNs for Age and Gender Classification:</strong> Developed a dual-purpose deep learning model achieving high accuracy on the UTKFace dataset.</li>
-                <li><i class="fas fa-cloud"></i> <strong>Serverless ETL Implementations:</strong> Automated data pipelines leveraging AWS Lambda for cost-efficient and scalable data processing.</li>
-                <li><i class="fas fa-database"></i> <strong>Kimball Data Modeling:</strong> Designed and implemented dimensional data models for efficient querying and reporting in enterprise environments.</li>
-                <li><i class="fas fa-project-diagram"></i> <strong>Apache Airflow:</strong> Orchestrated complex workflows, integrating APIs and databases for end-to-end data solutions.</li>
-                <li><i class="fas fa-code"></i> <strong>Flask Development:</strong> Created dynamic web applications, including dashboards and APIs, to support real-time data visualization and decision-making.</li>
-                <li><i class="fas fa-network-wired"></i> <strong>API Handling:</strong> Implemented API integrations for data ingestion and transformation.</li>
+                <li><i class="fas fa-envelope"></i> <strong>Naive Bayes for Email Spam Detection:</strong> Built a
+                    classifier to identify spam emails using NLP techniques and probabilistic models.
+                    <br>
+                    <a class="case-study-button" href="https://github.com/Karan-Manhas/spam-classifier" target="_blank">
+                        View Project on GitHub
+                    </a>
+                </li>
+                <li><i class="fas fa-user"></i> <strong>ResNet50 and CNNs for Age and Gender Classification:</strong>
+                    Developed a dual-purpose deep learning model achieving high accuracy on the UTKFace dataset.</li>
+                <li><i class="fas fa-project-diagram"></i> <strong>Model Context Protocol Agent:</strong> Built a GitHub
+                    Pull Request summarizer using the MCP framework, enabling automated, context-rich summaries of PRs
+                    using ChatGPT. The agent parses code diffs, commit messages, and file changes, then prompts GPT with
+                    relevant metadata for concise and developer-friendly summaries—streamlining code reviews and
+                    improving team productivity.</li>
+                    <li><i class="fas fa-cloud"></i> <strong>Serverless ETL Implementations:</strong> Automated data
+                        pipelines leveraging AWS Lambda for cost-efficient and scalable data processing.</li>
+                    <li><i class="fas fa-database"></i> <strong>Kimball Data Modeling:</strong> Designed and implemented
+                        dimensional data models for efficient querying and reporting in enterprise environments.</li>
+                <li><i class="fas fa-code"></i> <strong>Flask Development:</strong> Created dynamic web applications,
+                    including dashboards and APIs, to support real-time data visualization and decision-making.</li>
+                <li><i class="fas fa-network-wired"></i> <strong>API Handling:</strong> Implemented API integrations for
+                    data ingestion and transformation.</li>
             </ul>
         </div>
 
@@ -46,4 +81,5 @@
         </div>
     </div>
 </body>
+
 </html>
