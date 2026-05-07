@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Karan Manhas | AI, ML & Data Engineering Portfolio</title>
-    <meta name="description" content="Karan Manhas - MSc Computer Scientist Portfolio. Projects in AI, ML, Cryptography, and Data Engineering.">
+    <meta name="description" content="Karan Manhas - Senior Software Engineer working across AI systems, cybersecurity, data engineering, cryptographic benchmarking, and developer tooling.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -23,113 +23,181 @@
     </div>
 
     <div id="container">
-        <h2>About Me</h2>
-        <p>
+<h2>About Me</h2>
+
 <p>
-  <strong>Hi, I’m Karan</strong> a Computer Scientist passionate about building systems.  
-  My work includes <strong>Machine Learning</strong>, <strong>Artificial Intelligence</strong>, and <strong>Data Engineering</strong> to solve real-world problems with reliable code.
-</p>            
-<p>
-  I’ve built many interesting systems like:
-  <ul>
-    <li>Deep learning models (e.g. ResNet50 for age/gender classification)</li>
-    <li>Spam classifiers using Naive Bayes</li>
-    <li>Real-time dashboards with Flask, Redshift, and Docker</li>
-  </ul>
+  <strong>Hi, I’m Karan </strong> a Senior Software Engineer focused on
+  <strong>AI systems</strong>, <strong>cybersecurity</strong>, <strong>data engineering</strong>,
+  and <strong>systems-oriented software development</strong>.
 </p>
 
 <p>
-  On the data engineering side, I’ve done some fun stuff such as:
-  <ul>
-    <li>Orchestrated serverless ETL pipelines with AWS Lambda</li>
-    <li>Modeled dimensional data warehouses using the Kimball methodology</li>
-    <li>Built robust data workflows with Apache Airflow and integrated APIs for large-scale ingestion</li>
-  </ul>
+  I build practical engineering systems that combine reliable software, measurable performance,
+  and clear technical decision-making. My work spans AI tooling, data pipelines, distributed
+  infrastructure, observability, and cryptographic benchmarking.
 </p>
 
 <p>
-  Most recently, I benchmarked <strong>Post-Quantum Cryptography algorithms</strong> like KYBER-CRYSTALS vs. ECDH using C++, OpenSSL, and liboqs in distributed AWS environments.        </p>
+  I am particularly interested in building production-oriented systems where correctness,
+  security, performance, and operational reliability matter.
+</p>
 
-        <h2>Case Studies</h2>
-        <div id="case-studies">
-            <h3>Machine Learning & AI</h3>
-            <ul>
-  Built a probabilistic NLP pipeline for spam classification.
-  Applied <strong>Laplace smoothing</strong> to handle unseen tokens and improve robustness,
-  achieving <strong>85% classification accuracy</strong> on a held-out test set.
-                    <br>
-                    <a class="case-study-button" href="https://github.com/Karan-Manhas/spam-classifier" target="_blank">View Code on GitHub</a>
-                </li>
-            
-<li>
-  <i class="fas fa-user"></i>
-  <strong>ResNet50 and CNNs for Age and Gender Classification:</strong>
-  Designed dual-head CNN architectures for simultaneous gender classification and age regression.
-  Compared a from scratch CNN against a fine-tuned ResNet50, achieving <strong>~92% gender accuracy</strong> and <strong>~6–7 years Mean Absolute Error</strong> on a validation set.
-</li>            
-                <li><i class="fas fa-project-diagram"></i> <strong>Model Context Protocol Agent:</strong> <span class="featured-tag">Featured</span> GitHub PR summarizer built with the MCP framework and ChatGPT, parsing diffs and commit history for automatic PR summaries.
-                    <br>
-                    <a class="case-study-button" href="https://github.com/Karan-Manhas/model_context_protocol_mvp" target="_blank">View Code on GitHub</a>
-                </li>
-                <li><i class="fas fa-image"></i> <strong>Tyre Image Classification Pipeline:</strong> Developed an ETL image processing pipeline leveraging OCR (Tesseract) to extract tyre markings and classify based on character features.</li>
-                <li><i class="fas fa-chart-line"></i> <strong>Bayesian Prediction Engine for Bids:</strong> Built a probabilistic model using Bayesian inference to estimate bid outcomes under uncertainty and enhance decision-making strategies.</li>
+<h2>Featured Projects</h2>
 
-            </ul>
-            
-            <h3>Data Engineering & Systems</h3>
-            <ul>
-<li>
-  <i class="fas fa-cloud"></i>
-  <strong>Serverless ETL Implementations:</strong>
-  Designed AWS Lambda ETL pipelines supporting <strong>52+ users across 10+ organizations</strong>,
-  achieving <strong>&lt;1.5ms processing time per report</strong> with cron-based scheduling to guarantee
-  reliable weekday execution in time-sensitive workflows.
-</li>
-            
-                <li><i class="fas fa-database"></i> <strong>Kimball Data Modeling:</strong> Designed and implemented dimensional models to support enterprise analytics in Redshift.</li>
+<div id="case-studies">
 
-                <li><i class="fas fa-terminal"></i> <strong>Natural Language to SQL Agent:</strong> Built an agent-based application using `openai-agents` SDK, Redshift, and Streamlit that converts natural language questions into SQL, executes them, and returns insights from a data warehouse.</li>
-            
-                <li><i class="fas fa-vector-square"></i> <strong>Vector Database for Semantic Search:</strong> Set up a pgvector-powered Postgres instance for semantic search tasks, fully containerized with Docker for local R&D development environments.</li>
+  <h3>AI, Security & Developer Tooling</h3>
+  <ul>
+    <li>
+      <i class="fas fa-project-diagram"></i>
+      <strong>Model Context Protocol Agent:</strong>
+      Built an MCP-based GitHub pull request summariser that parses diffs and commit history
+      to generate structured PR summaries using LLM-assisted workflows.
+      <br>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/model_context_protocol_mvp" target="_blank">View Code on GitHub</a>
+    </li>
 
-                <li><i class="fas fa-code"></i> <strong>Flask Development:</strong> Built web dashboards and APIs with Flask and Docker, including a Redshift resource monitoring tool.</li>
-            </ul>
-            <h3>Applications & Tools</h3>
+    <li>
+      <i class="fas fa-terminal"></i>
+      <strong>Natural Language to SQL Agent:</strong>
+      Built an agent-based application using the OpenAI Agents SDK, Redshift, and Streamlit
+      to convert natural language questions into governed SQL queries and return warehouse-backed insights.
+    </li>
+
+    <li>
+      <i class="fas fa-vector-square"></i>
+      <strong>Vector Search R&D Environment:</strong>
+      Set up a containerised PostgreSQL and pgvector environment for semantic search experimentation,
+      retrieval workflows, and local AI development.
+    </li>
+  </ul>
+
+  <h3>Cryptography, Benchmarking & Statistical Analysis</h3>
+  <ul>
+    <li>
+      <i class="fas fa-lock"></i>
+      <strong>CryptoMetrics:</strong>
+      Implemented and evaluated post-quantum and classical cryptographic algorithms using C++, OpenSSL,
+      liboqs, Python, and R. Benchmarked ML-KEM/Kyber against ECDH across execution time, memory usage,
+      and system-level performance characteristics.
+      <br>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/CryptoMetricsOfficial" target="_blank">View Code on GitHub</a>
+    </li>
+
+    <li>
+      <i class="fas fa-chart-line"></i>
+      <strong>CryptoGrubbs:</strong>
+      Built a statistical analysis tool for cryptographic benchmarking data, applying Grubbs’ test
+      to detect outliers and improve the reliability of experimental performance measurements.
+      <br>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/crypto-grubbs-py" target="_blank">View Code on GitHub</a>
+    </li>
+  </ul>
+
+  <h3>Data Engineering & Systems</h3>
+  <ul>
+    <li>
+      <i class="fas fa-cloud"></i>
+      <strong>Serverless ETL Implementations:</strong>
+      Designed AWS Lambda-based ETL workflows supporting operational reporting across multiple users
+      and organisations, with scheduled execution for time-sensitive business processes.
+    </li>
+
+    <li>
+      <i class="fas fa-database"></i>
+      <strong>Kimball Data Modelling:</strong>
+      Designed dimensional models in Redshift to support enterprise analytics, reporting consistency,
+      and downstream BI use cases.
+    </li>
+
+    <li>
+      <i class="fas fa-code"></i>
+      <strong>Flask and Redshift Dashboards:</strong>
+      Built internal dashboards and APIs using Flask, Docker, and Redshift for monitoring operational
+      and data warehouse resources.
+    </li>
+
+    <li>
+      <i class="fas fa-wifi"></i>
+      <strong>Network Telemetry Node:</strong>
+      Built an ESP32-based telemetry node exposing health, WiFi, memory, and runtime diagnostics through
+      lightweight HTTP endpoints and a local dashboard.
+      <br>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/network-telemetry-node" target="_blank">View Code on GitHub</a>
+    </li>
+  </ul>
+
+  <h3>Applied Machine Learning</h3>
+  <ul>
+    <li>
+      <i class="fas fa-envelope"></i>
+      <strong>Spam Classifier:</strong>
+      Built a probabilistic NLP classifier using Naive Bayes and Laplace smoothing, achieving 85%
+      classification accuracy on a held-out test set.
+      <br>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/spam-classifier" target="_blank">View Code on GitHub</a>
+    </li>
+
+    <li>
+      <i class="fas fa-user"></i>
+      <strong>Age and Gender Classification:</strong>
+      Designed CNN and ResNet50-based models for simultaneous gender classification and age regression,
+      comparing custom and transfer-learning approaches.
+    </li>
+
+    <li>
+      <i class="fas fa-image"></i>
+      <strong>Tyre Image Classification Pipeline:</strong>
+      Developed an image-processing pipeline using OCR and feature extraction to classify tyre markings.
+    </li>
+  </ul>
+
+  <h3>Applications & Tools</h3>
+  <ul>
+    <li>
+      <i class="fas fa-clock"></i>
+      <strong>ScreenTimeMonitor:</strong>
+      Browser-based productivity tracker using HTML, JavaScript, Plotly.js, localStorage, and responsive
+      visualisation for local screen-time analysis.
+      <br>
+      <a class="case-study-button" href="https://karan-manhas.github.io/ScreenTimeMonitor.github.io/" target="_blank">View Live Project</a>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/ScreenTimeMonitor.github.io" target="_blank">View Code on GitHub</a>
+    </li>
+
+    <li>
+      <i class="fas fa-calculator"></i>
+      <strong>SRPN Calculator:</strong>
+      Stack-based Reverse Polish Notation calculator implemented as a technical exercise in parsing,
+      state management, and deterministic computation.
+      <br>
+      <a class="case-study-button" href="https://github.com/Karan-Manhas/SRPN-Calculator" target="_blank">View Code on GitHub</a>
+    </li>
+  </ul>
+
+  <h3>Academic Research</h3>
+  <ul>
+    <li>
+      <i class="fas fa-lock"></i>
+      <strong>MSc Dissertation: Post-Quantum Cryptography:</strong>
+      Evaluated post-quantum and classical key exchange mechanisms in distributed environments using C++,
+      OpenSSL, liboqs, Python, R, and AWS-based benchmarking.
+    </li>
+
+    <li>
+      <i class="fas fa-cloud-sun"></i>
+      <strong>BSc Dissertation: Atmospheric Chemistry & Physics:</strong>
+      Analysed seven years of DOAS atmospheric spectral data using R, applying time-series decomposition,
+      regression, smoothing, and statistical modelling to pollutant concentration trends.
+    </li>
+  </ul>
+
+</div>
+
+<h2>Skills</h2>
 <ul>
-    <li><i class="fas fa-clock"></i> <strong>ScreenTimeMonitor – Browser-Based Productivity Tracker:</strong> Responsive web app using HTML, JS, and Plotly.js to visualize local screen time. Includes session persistence via localStorage and web analytics for user engagement tracking.
-        <br>
-        <a class="case-study-button" href="https://karan-manhas.github.io/ScreenTimeMonitor.github.io/" target="_blank">View Live Project</a>
-        <a class="case-study-button" href="https://github.com/Karan-Manhas/ScreenTimeMonitor.github.io" target="_blank">View Code on GitHub</a>
-    </li>
-
-    <li><i class="fas fa-calculator"></i> <strong>SRPN Calculator (Stack Reverse Polish Notation):</strong> <span class="featured-tag">Featured</span> Java-based command-line calculator using stack logic, saturation, and pseudo-random support.
-        <br>
-        <a class="case-study-button" href="https://github.com/Karan-Manhas/SRPN-Calculator" target="_blank">View Code on GitHub</a>
-    </li>
+  <li><strong>Languages:</strong> Python, Go, C++, JavaScript, Java, SQL, Rust, Haskell</li>
+  <li><strong>AI & ML:</strong> LLM tooling, scikit-learn, TensorFlow, Keras, NLP, computer vision, vector search</li>
+  <li><strong>Data Engineering:</strong> Apache Airflow, AWS Lambda, Redshift, ETL pipelines, Kimball modelling, data quality</li>
+  <li><strong>Systems & Cloud:</strong> Docker, AWS, Flask APIs, PostgreSQL, pgvector, Git, embedded telemetry</li>
+  <li><strong>Security & Cryptography:</strong> OpenSSL, liboqs, post-quantum cryptography, benchmarking, statistical validation</li>
 </ul>
-
-<h3>Academic Research & Projects</h3>
-<ul>
-    <li><i class="fas fa-lock"></i> <strong>MSc Dissertation – Post-Quantum Cryptography:</strong> Implemented and evaluated KYBER-CRYSTALS vs. ECDH in distributed systems using C++,Python and R. Benchmarked cryptographic algorithms based on time complexity and space efficiency using OpenSSL and liboqs, across distributed systems on AWS.
-    </li>
-    <li><i class="fas fa-cloud-sun"></i> <strong>BSc Dissertation – Atmospheric Chemistry & Physics Statistical Analysis:</strong> Analyzed over 7 years of atmospheric spectral data gathered from Differential Optical Absorption Spectroscopy (DOAS) technology. Applied advanced statistical techniques in R, including time series decomposition, multivariate regression, and data smoothing, to model pollutant concentrations and identify long-term trends. Was shortlisted for an academic award.</li>
-</ul>
-        </div>
-
-        <h2>Skills</h2>
-        <ul>
-            <li><strong>Languages:</strong> Python, Java, JavaScript, C++, SQL, Haskell, Rust, Golang</li>
-            <li><strong>ML Frameworks:</strong> Scikit-learn, TensorFlow, Keras</li>
-            <li><strong>Data Engineering:</strong> ETL pipelines, Apache Airflow, Redshift, Kimball modeling</li>
-            <li><strong>DevOps & Cloud:</strong> Docker, AWS Lambda, GCP, Flask APIs, Git</li>
-          </ul>
-
-        <h2>Contact Me</h2>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/karan-manhas/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Karan-Manhas" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-    </div>
-</body>
-
-</html>
