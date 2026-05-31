@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="../script.js"></script>
+    <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Should Engineers Care About KL Divergence? | Karan Manhas</title>
+    <meta name="description" content="A practical engineering note explaining KL divergence, probability distributions, model behaviour, distribution shift, and why it matters in modern machine learning and LLM systems.">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .kl-animation-card {
+            background: var(--card-bg-color);
+            border: 1px solid rgba(127, 127, 127, 0.25);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .kl-animation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .kl-animation-header h3 {
+            margin: 0;
+        }
+
+        .kl-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .kl-controls label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .kl-controls input[type="range"] {
+            width: 180px;
+        }
+
+        .kl-bars {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            align-items: end;
+            height: 260px;
+            padding: 20px 10px 10px;
+            border-bottom: 2px solid var(--text-color);
+            border-left: 2px solid var(--text-color);
+        }
+
+        .kl-bar-group {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 5px;
+            height: 100%;
+            position: relative;
+        }
+
+        .kl-bar {
+            width: 28px;
+            min-height: 4px;
+            border-radius: 6px 6px 0 0;
+            transition: height 0.35s ease;
+        }
+
+        .kl-bar-p {
+            background: var(--accent-color);
+        }
+
+        .kl-bar-q {
+            background: #ff9800;
+        }
+
+        .kl-token-label {
+            position: absolute;
+            bottom: -30px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .kl-legend {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 42px;
+            font-size: 0.9rem;
+        }
+
+        .kl-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .kl-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .kl-p-swatch {
+            background: var(--accent-color);
+        }
+
+        .kl-q-swatch {
+            background: #ff9800;
+        }
+
+        .kl-output {
+            margin-top: 16px;
+            padding: 14px;
+            border-left: 4px solid var(--accent-color);
+            background: rgba(127, 127, 127, 0.08);
+            border-radius: 8px;
+        }
+
+        .kl-output strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .kl-bars {
+                gap: 8px;
+                height: 220px;
+            }
+
+            .kl-bar {
+                width: 20px;
+            }
+
+            .kl-token-label {
+                font-size: 0.68rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <button id="dark-mode-toggle" title="Toggle dark mode">
+        <i class="fas fa-moon"></i> 
+    </button>
+    <div id="scroll-bar"></div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../technical_notes.html">Technical Notes</a>
+    </nav>
+
+    <main class="note-article">
+        <header>
+            <p class="note-meta">Technical Note · May 2026 · Machine Learning / LLMs / Statistics / Model Behaviour</p>
+            <h1>Why Should Engineers Care About KL Divergence?</h1>
+
+            <div class="technical-notes-tags">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">LLMs</span>
+                <span class="tag">Statistics</span>
+                <span class="tag">Model Behaviour</span>
+                <span class="tag">Distribution Shift</span>
+            </div>
+
+            <p class="note-summary">
+                This note explains KL divergence from an applied engineering view. The main aspect of this is that KL divergence measures how different
+                one probability distribution is from another. This is useful in debugging model drift, behavioural adaptation,
+                preference optimisation, inference changes, and distribution shift in production AI systems.
+            </p>
+        </header>
+
+        <section class="note-section">
+            <h2>Context</h2>
+            <p>
+                KL divergence often is found in many ML papers, LLM training pipelines, reinforcement learning,
+                model monitoring, and other fancy statistical evaluation components. At first glance, it looks abstract, but the underlying logic is practical:
+                compare what a model currently believes against some reference distribution.
+            </p>
+
+            <p>
+                In simple human language, KL divergence essentially asks: if distribution P is the target behaviour and distribution Q is the approximation,
+                how much information is lost when Q is used instead of P? For LLMs, these distributions may represent token probabilities,
+                policy outputs, reward-model behaviour, or responses before and after fine-tuning.
+            </p>
+        </section>
+
+        <section class="note-section">
+            <h2>Interactive KL Divergence Animation</h2>
+            <p>
+                The animation below compares a target distribution P against an approximate distribution Q. Move the slider to make Q drift away
+                from P. As the distributions become less aligned, the KL divergence value increases.
+            </p>
+
+            <div class="kl-animation-card">
+                <div class="kl-animation-header">
+                    <h3>Distribution P vs Distribution Q</h3>
+
+                    <div class="kl-controls">
+                        <label for="kl-drift">Q drift:</label>
+                        <input id="kl-drift" type="range" min="0" max="100" value="25">
+                        <span id="kl-drift-value">25%</span>
+                    </div>
+                </div>
+
+                <div class="kl-bars" aria-label="Animated bar chart comparing two probability distributions">
+                    <div class="kl-bar-group">
+                        <div class="kl-bar kl-bar-p" id="p0"></div>
+                        <div class="kl-bar kl-bar-q" id="q0"></div>
+                        <span class="kl-token-label">token_1</span>
+                    </div>
+                    <div class="kl-bar-group">
+                        <div class="kl-bar kl-bar-p" id="p1"></div>
+                        <div class="kl-bar kl-bar-q" id="q1"></div>
+                        <span class="kl-token-label">token_2</span>
+                    </div>
+                    <div class="kl-bar-group">
+                        <div class="kl-bar kl-bar-p" id="p2"></div>
+                        <div class="kl-bar kl-bar-q" id="q2"></div>
+                        <span class="kl-token-label">token_3</span>
+                    </div>
+                    <div class="kl-bar-group">
+                        <div class="kl-bar kl-bar-p" id="p3"></div>
+                        <div class="kl-bar kl-bar-q" id="q3"></div>
+                        <span class="kl-token-label">token_4</span>
+                    </div>
+                    <div class="kl-bar-group">
+                        <div class="kl-bar kl-bar-p" id="p4"></div>
+                        <div class="kl-bar kl-bar-q" id="q4"></div>
+                        <span class="kl-token-label">token_5</span>
+                    </div>
+                </div>
+
+                <div class="kl-legend">
+                    <span class="kl-legend-item"><span class="kl-swatch kl-p-swatch"></span> P: target/reference distribution</span>
+                    <span class="kl-legend-item"><span class="kl-swatch kl-q-swatch"></span> Q: approximation/model distribution</span>
+                </div>
+
+                <div class="kl-output">
+                    <strong id="kl-value">KL(P || Q): 0.0000</strong>
+                    <span id="kl-explanation">
+                        Q is close to P, so the information loss is low.
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="note-section">
+            <h2>Key Lessons</h2>
+
+            <h3>1. KL divergence compares distributions, not individual values</h3>
+            <p>
+                KL divergence is not measuring whether a single prediction is right or wrong. It just measures how one full probability distribution
+                is different from another. This is important as models don't just output answers; they assign probability across many possible outputs.
+            </p>
+
+            <div class="note-callout">
+                <strong>Engineering takeaway:</strong> KL divergence is useful when model behaviour is probabilistic. It helps quantify whether
+                the whole behaviour profile has actually shifted, not just whether one output changed.
+            </div>
+
+            <h3>2. Direction matters</h3>
+            <p>
+                KL divergence is asymmetric. KL(P || Q) is not generally the same as KL(Q || P). This is important as the result depends on
+                which distribution is treated as the reference and which distribution is treated as the approximation.
+            </p>
+
+            <h3>3. It is useful for understanding LLM behaviour</h3>
+            <p>
+                In LLM systems, probability distributions appear everywhere: next-token prediction, policy optimisation, instruction tuning,
+                preference optimisation, distillation, and sampling behaviour. KL divergence is often used to prevent a tuned model from moving
+                too far away from a base or reference model.
+            </p>
+
+            <table class="note-table">
+                <thead>
+                    <tr>
+                        <th>Engineering Scenario</th>
+                        <th>What KL Divergence Helps Measure</th>
+                        <th>Risk if Ignored</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fine-tuning</td>
+                        <td>How far the adapted model moves from the base model</td>
+                        <td>Overfitting, degraded general capability, unstable outputs</td>
+                    </tr>
+                    <tr>
+                        <td>Model monitoring</td>
+                        <td>Whether live input or output distributions have shifted</td>
+                        <td>Silent production drift and degraded reliability</td>
+                    </tr>
+                    <tr>
+                        <td>RLHF / preference optimisation</td>
+                        <td>Whether policy updates are too aggressive</td>
+                        <td>Reward hacking or unnatural model behaviour</td>
+                    </tr>
+                    <tr>
+                        <td>Data validation</td>
+                        <td>Whether train, validation, and production distributions differ</td>
+                        <td>Offline metrics stop matching real-world behaviour</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4. Small changes in probability mass can matter</h3>
+            <p>
+                A model can look similar at a high level while changing probability mass in important areas. For example, if a security model
+                becomes slightly less confident on rare malicious patterns, aggregate accuracy might still look acceptable while operational risk increases.
+            </p>
+
+            <pre class="note-code"><code># Small Python example: KL(P || Q)
+import math
+
+p = [0.40, 0.25, 0.20, 0.10, 0.05]
+q = [0.35, 0.25, 0.20, 0.15, 0.05]
+
+kl = sum(pi * math.log(pi / qi) for pi, qi in zip(p, q))
+print(round(kl, 4))</code></pre>
+        </section>
+
+        <section class="note-section">
+            <h2>Evaluation Notes</h2>
+            <p>
+                KL divergence should not be treated as a universal quality metric. A lower value does not automatically mean a better model,
+                and a higher value does not automatically mean a worse model. The interpretation depends on the goal.
+            </p>
+
+            <ul>
+                <li><strong>Low KL:</strong> the new distribution remains close to the reference distribution.</li>
+                <li><strong>High KL:</strong> the new distribution has moved further away from the reference distribution.</li>
+                <li><strong>Useful signal:</strong> detecting drift, measuring behavioural change, or constraining model updates.</li>
+                <li><strong>Weak signal:</strong> judging task correctness without accuracy, calibration, or qualitative inspection.</li>
+            </ul>
+
+            <div class="note-callout">
+                <strong>Practical scoring approach:</strong> combine KL divergence with task-specific metrics, calibration checks,
+                regression tests, human review, and error analysis. KL divergence tells you that behaviour changed; it does not always tell you
+                whether the change is good.
+            </div>
+        </section>
+
+        <section class="note-section">
+            <h2>Final Summary</h2>
+            <p>
+                KL divergence matters because modern AI systems are distributional systems. For engineers, it provides a compact way to reason
+                about behavioural drift, training stability, inference changes, and model alignment. It is not a replacement for evaluation,
+                but it is a useful diagnostic when comparing model behaviour before and after a change.
+            </p>
+        </section>
+
+        <a class="back-link" href="../technical_notes.html">← Back to Technical Notes</a>
+    </main>
+
+    <script>
+        const pDistribution = [0.40, 0.25, 0.20, 0.10, 0.05];
+
+        const driftPatterns = [
+            [0.40, 0.25, 0.20, 0.10, 0.05],
+            [0.18, 0.13, 0.32, 0.27, 0.10]
+        ];
+
+        const driftSlider = document.getElementById("kl-drift");
+        const driftValue = document.getElementById("kl-drift-value");
+        const klValue = document.getElementById("kl-value");
+        const klExplanation = document.getElementById("kl-explanation");
+
+        function interpolateDistribution(start, end, amount) {
+            const raw = start.map((value, index) => value + ((end[index] - value) * amount));
+            const total = raw.reduce((sum, value) => sum + value, 0);
+            return raw.map(value => value / total);
+        }
+
+        function calculateKlDivergence(p, q) {
+            return p.reduce((sum, pValue, index) => {
+                const qValue = Math.max(q[index], 0.000001);
+                return sum + (pValue * Math.log(pValue / qValue));
+            }, 0);
+        }
+
+        function updateKlAnimation() {
+            const drift = Number(driftSlider.value) / 100;
+            const qDistribution = interpolateDistribution(driftPatterns[0], driftPatterns[1], drift);
+            const kl = calculateKlDivergence(pDistribution, qDistribution);
+
+            driftValue.textContent = `${driftSlider.value}%`;
+            klValue.textContent = `KL(P || Q): ${kl.toFixed(4)}`;
+
+            pDistribution.forEach((value, index) => {
+                document.getElementById(`p${index}`).style.height = `${value * 500}px`;
+                document.getElementById(`q${index}`).style.height = `${qDistribution[index] * 500}px`;
+            });
+
+            if (kl < 0.02) {
+                klExplanation.textContent = "Q is close to P, so the information loss is low.";
+            } else if (kl < 0.10) {
+                klExplanation.textContent = "Q has started to drift from P. The model behaviour is changing, but it is still fairly close to the reference.";
+            } else {
+                klExplanation.textContent = "Q is now materially different from P. This indicates stronger distribution shift or behavioural change.";
+            }
+        }
+
+        driftSlider.addEventListener("input", updateKlAnimation);
+        updateKlAnimation();
+    </script>
+
+</body>
+</html>

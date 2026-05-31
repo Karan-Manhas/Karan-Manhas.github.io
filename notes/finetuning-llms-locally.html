@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="../script.js"></script>
+    <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons Learned when Fine-Tuning LLMs Locally | Karan Manhas</title>
+    <meta name="description" content="Practical engineering notes from fine-tuning LLMs locally with QLoRA, quantisation, CUDA, adapter size, dataset quality, and evaluation trade-offs.">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+    <button id="dark-mode-toggle" title="Toggle dark mode">
+        <i class="fas fa-moon"></i> 
+    </button>
+    <div id="scroll-bar"></div>
+
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../technical_notes.html">Technical Notes</a>
+    </nav>
+
+    <main class="note-article">
+        <header>
+            <p class="note-meta">Technical Note · May 2026 · LLMs / QLoRA / AI Engineering</p>
+            <h1>Lessons Learned when Fine-Tuning LLMs Locally</h1>
+
+            <div class="technical-notes-tags">
+                <span class="tag">LLMs</span>
+                <span class="tag">Fine-Tuning</span>
+                <span class="tag">QLoRA</span>
+                <span class="tag">CUDA</span>
+                <span class="tag">Evaluation</span>
+            </div>
+
+            <p class="note-summary">
+                This note identifies the lessons from fine-tuning a LLM against a small technical specification.
+                Overall, the main takeway is that fine-tuning does not overwrite anything: it simply shifts the probability distributions,
+                however base-model priors (prior base model knowledge), dataset gaps, and inference configuration still massively influence the final output.
+            </p>
+        </header>
+
+        <section class="note-section">
+            <h2>Context</h2>
+            <p>
+                The main aim of the experiment was to understand how an LLM can answer questions and generate code syntax on a specific technical domain using parameter-efficient
+                fine-tuning (PEFT). The experiment built the pipeline on-prem rather than a cloud deployed service so that hardware constraints,
+                dependency issues, adapter configuration, and evaluation failure modes could be observed directly (As well as costs...).
+            </p>
+
+            <p>
+                The training setup focused on a QLoRA-style adaptation. This essentially means quantising the base model to reduce memory constraints on my PC while training
+                a small set of low-rank adapter weights. This made the experiment possible on constrained GPU hardware, but the tradeoff on dataset quality and training configure were highly focused on.
+            </p>
+        </section>
+
+        <section class="note-section">
+            <h2>Key Lessons</h2>
+
+            <h3>1. Fine-tuning dictates behaviour; it does not replace the base model knowledge</h3>
+            <p>
+                The fine-tuned model was more likely to use domain-specific terminology and answer in the expected format. BUT,
+                prior base knowledge was retained. This was massively obvious as when the prompt moved outside the coverage of the training dataset,
+                the model fell back to generic answers.
+            </p>
+
+            <div class="note-callout">
+                <strong>Engineering takeaway:</strong> fine-tuning should be seen as behavioural steering, not pure deterministic knowledge injection.
+                If correctness matters, ideally it should be paired with retrieval, validators, or other post-generation checks.
+            </div>
+
+            <h3>2. Dataset quality dominated model quality</h3>
+            <p>
+                The strongest improvements came from removing ambiguous examples, making answer formats consistent, and increasing
+                coverage around edge cases. More examples did help but only when they reduced uncertainty. Repetitive or weak examples
+                just taught the model style in how to respond as opposed to correctness.
+            </p>
+
+            <h3>3. Adapter size is a trade-off, not some random leaderboard metric</h3>
+            <p>
+                Larger adapters did give the model far more capacity to take on domain behaviour, however it increased the risk of overfitting
+                a small dataset. Smaller adapters were far more easier to train and even cheaper to store, but could still underfit complex domain rules.
+                The practical target was not the biggest adapter; it was the smallest adapter that improved evaluation performance
+                without making generalisation worse.
+            </p>
+
+            <table class="note-table">
+                <thead>
+                    <tr>
+                        <th>Configuration Choice</th>
+                        <th>Observed Effect</th>
+                        <th>Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Small LoRA rank</td>
+                        <td>Fast, cheap, easier to iterate</td>
+                        <td>May not capture enough domain behaviour</td>
+                    </tr>
+                    <tr>
+                        <td>Larger LoRA rank</td>
+                        <td>Higher adaptation capacity</td>
+                        <td>Can overfit narrow or repetitive datasets</td>
+                    </tr>
+                    <tr>
+                        <td>More training epochs</td>
+                        <td>Improves memorisation of target format</td>
+                        <td>May reduce robustness on unseen prompts</td>
+                    </tr>
+                    <tr>
+                        <td>Lower temperature at inference</td>
+                        <td>More stable outputs</td>
+                        <td>Can still produce confidently wrong answers</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4. CUDA compatibility is vital, not just a setup pain</h3>
+            <p>
+                Local fine-tuning is masssively sensitive to CUDA, PyTorch, bitsandbytes, GPU driver versions, and operating-system details.
+                A large part of the engineering work was not model design; but dependency alignment and reproducibility.
+            </p>
+
+            <pre class="note-code"><code># Example environment checks
+python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+nvidia-smi
+python -c "import bitsandbytes as bnb; print(bnb.__version__)"</code></pre>
+        </section>
+
+        <section class="note-section">
+            <h2>Evaluation Notes</h2>
+            <p>
+                Evaluation should include both successful examples and failure examples. A model that answers common domain questions well
+                can still fail on slight prompt variations, missing concepts, or callable constructs that were not represented in training.
+            </p>
+
+            <ul>
+                <li><strong>Positive tests:</strong> questions directly represented in the training data.</li>
+                <li><strong>Paraphrase tests:</strong> semantically equivalent prompts written differently.</li>
+                <li><strong>Boundary tests:</strong> prompts close to, but outside, the domain specification.</li>
+                <li><strong>Negative tests:</strong> prompts where the correct answer is to reject, clarify, or state uncertainty.</li>
+            </ul>
+
+            <div class="note-callout">
+                <strong>Practical scoring approach:</strong> combine qualitative inspection with a small rubric: factual correctness,
+                format adherence, hallucination rate, refusal quality, and consistency across repeated runs.
+            </div>
+        </section>
+
+        <section class="note-section">
+            <h2>Final Summary</h2>
+            <p>
+                Fine-tuning is valuable for adapting tone, terminology, and response structure. It is far less reliable as a standalone
+                method for enforcing correctness. For serious production AI systems, it is best to treat fine-tuning as one layer in a wider architecture:
+                retrieval for facts, guardrails for policy constraints, evaluation harnesses for regression testing, and
+                observability for monitoring real-world behaviour.
+            </p>
+        </section>
+
+        <a class="back-link" href="../technical_notes.html">← Back to Technical Notes</a>
+    </main>
+
+</body>
+</html>
