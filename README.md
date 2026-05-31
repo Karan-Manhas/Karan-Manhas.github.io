@@ -17,7 +17,7 @@ Portfolio showcases projects, technical notes, and engineering work across:
 
 The site is intentionally lightweight and built using vanilla.
 
-# Featues
+# Features
 - Responsive
 - Dark Mode support
 - technical notes/blog section
@@ -29,6 +29,12 @@ The site is intentionally lightweight and built using vanilla.
 - CSS
 - Javascript
 - Github Pages
+
+# CI/CD
+
+This portfolio uses GitHub Actions to validate HTML structure and check links on each push or pull request to `main`.
+
+The site is deployed through GitHub Pages.
 
 # Author
 Karan 
