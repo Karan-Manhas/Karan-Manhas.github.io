@@ -20,3 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
   });
 });
+
+
+// KL Divergence  logic
