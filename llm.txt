@@ -1,0 +1,14 @@
+LLM INFERENCE CAVEATS
+
+An inference result is a probabilistic prediction, not a statement of fact.
+
+- Context is finite, and omitted information can change the answer.
+- Sampling settings trade consistency for variation.
+- Plausible language can still contain fabricated or incorrect claims.
+- Model behavior depends on prompts, runtime configuration, and model version.
+- Untrusted input and generated output both require security boundaries.
+
+Validate important outputs against authoritative sources, measure behavior on
+representative workloads, and keep humans in control of consequential decisions.
+
+You found the note between the links.
