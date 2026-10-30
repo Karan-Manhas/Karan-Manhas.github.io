@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An overview of my BSc research using Beer–Lambert’s law, DOAS spectral data, and R to study atmospheric pollutant absorption.">
+  <title>Atmospheric Absorption &amp; Beer–Lambert’s Law | Karan Manhas</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://karan-manhas.github.io/notes/atmospheric-absorption.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Karan Manhas">
+    <meta property="og:title" content="Atmospheric Absorption &amp; Beer–Lambert’s Law | Karan Manhas">
+    <meta property="og:description" content="An overview of my BSc research using Beer–Lambert’s law, DOAS spectral data, and R to study atmospheric pollutant absorption.">
+    <meta property="og:url" content="https://karan-manhas.github.io/notes/atmospheric-absorption.html">
+    <meta property="og:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Atmospheric Absorption &amp; Beer–Lambert’s Law | Karan Manhas">
+    <meta name="twitter:description" content="An overview of my BSc research using Beer–Lambert’s law, DOAS spectral data, and R to study atmospheric pollutant absorption.">
+    <meta name="twitter:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta name="twitter:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
+  <script src="../script.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+  <nav aria-label="Main navigation">
+    <a href="../index.html">Home</a>
+    <a href="../technical_notes.html">Technical Notes</a>
+  </nav>
+  <button id="dark-mode-toggle" type="button" aria-label="Switch colour theme">☀</button>
+  <div id="scroll-bar"></div>
+
+  <main id="main-content" class="note-article" tabindex="-1">
+    <header>
+      <p class="eyebrow">BSc research / Atmospheric chemistry &amp; physics</p>
+      <h1>Understanding pollutant absorption.</h1>
+      <div class="technical-notes-tags">
+        <span class="tag">R</span>
+        <span class="tag">DOAS</span>
+        <span class="tag">Spectroscopy</span>
+        <span class="tag">Time-series analysis</span>
+      </div>
+      <p class="note-summary">My BSc dissertation analysed seven years of atmospheric spectral data
+        using R. Beer–Lambert’s law provided the physical basis for understanding how pollutants
+        absorb light and how absorption relates to their concentration.</p>
+    </header>
+
+    <section class="note-section">
+      <h2>From light to absorption</h2>
+      <p>For a single absorbing species at a given wavelength, Beer–Lambert’s law can be written as:</p>
+      <div class="note-callout">
+        <p class="absorption-equation">I = I<sub>0</sub> exp(−σnL)</p>
+        <ul>
+          <li>I<sub>0</sub>: incident light intensity, before absorption.</li>
+          <li>I: transmitted light intensity, after travelling through the pollutant.</li>
+          <li>σ: absorption cross-section at the chosen wavelength.</li>
+          <li>n: pollutant number density, or molecules per unit volume.</li>
+          <li>L: length of the light path through the pollutant.</li>
+        </ul>
+      </div>
+      <p>The fraction of incident light absorbed is 1 − I/I<sub>0</sub>. At a fixed wavelength,
+        more pollutant or a longer light path means greater absorption. This form assumes uniform
+        number density along the path and negligible light losses from other processes.</p>
+    </section>
+
+    <section class="note-section">
+      <h2>Analysing atmospheric data</h2>
+      <p>The research used differential optical absorption spectroscopy (DOAS) spectral data.
+        Analysis in R included time-series decomposition, regression, smoothing, and statistical
+        modelling to investigate pollutant concentration trends over seven years.</p>
+      <p>The equation connects the physical absorption process to the observations; the time-series
+        analysis examines how the observed pollutant concentrations vary over time.</p>
+    </section>
+
+    <a class="back-link" href="../index.html#case-studies">← Back to projects</a>
+  </main>
+</body>
+</html>

@@ -3,13 +3,28 @@
 <head>
 
     <script src="../script.js"></script>
-    <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Should Engineers Care About KL Divergence? | Karan Manhas</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://karan-manhas.github.io/notes/kl-divergence.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Karan Manhas">
+    <meta property="og:title" content="Why Should Engineers Care About KL Divergence? | Karan Manhas">
+    <meta property="og:description" content="A practical engineering note explaining KL divergence, probability distributions, model behaviour, distribution shift, and why it matters in modern machine learning and LLM systems.">
+    <meta property="og:url" content="https://karan-manhas.github.io/notes/kl-divergence.html">
+    <meta property="og:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why Should Engineers Care About KL Divergence? | Karan Manhas">
+    <meta name="twitter:description" content="A practical engineering note explaining KL divergence, probability distributions, model behaviour, distribution shift, and why it matters in modern machine learning and LLM systems.">
+    <meta name="twitter:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta name="twitter:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
     <meta name="description" content="A practical engineering note explaining KL divergence, probability distributions, model behaviour, distribution shift, and why it matters in modern machine learning and LLM systems.">
 
     <link rel="stylesheet" href="../style.css">
@@ -85,7 +100,7 @@
         }
 
         .kl-bar-q {
-            background: #ff9800;
+            background: repeating-linear-gradient(135deg, #3874ff 0 4px, #9dbdff 4px 6px);
         }
 
         .kl-token-label {
@@ -121,7 +136,7 @@
         }
 
         .kl-q-swatch {
-            background: #ff9800;
+            background: repeating-linear-gradient(135deg, #3874ff 0 4px, #9dbdff 4px 6px);
         }
 
         .kl-output {
@@ -155,17 +170,16 @@
 
 </head>
 <body>
-    <button id="dark-mode-toggle" title="Toggle dark mode">
-        <i class="fas fa-moon"></i> 
-    </button>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <button id="dark-mode-toggle" type="button" aria-label="Switch colour theme">☀</button>
     <div id="scroll-bar"></div>
 
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="../index.html">Home</a>
         <a href="../technical_notes.html">Technical Notes</a>
     </nav>
 
-    <main class="note-article">
+    <main id="main-content" class="note-article" tabindex="-1">
         <header>
             <p class="note-meta">Technical Note · May 2026 · Machine Learning / LLMs / Statistics / Model Behaviour</p>
             <h1>Why Should Engineers Care About KL Divergence?</h1>
@@ -218,7 +232,7 @@
                     </div>
                 </div>
 
-                <div class="kl-bars" aria-label="Animated bar chart comparing two probability distributions">
+                <div class="kl-bars" role="img" aria-label="Bar chart comparing two probability distributions">
                     <div class="kl-bar-group">
                         <div class="kl-bar kl-bar-p" id="p0"></div>
                         <div class="kl-bar kl-bar-q" id="q0"></div>
@@ -251,7 +265,7 @@
                     <span class="kl-legend-item"><span class="kl-swatch kl-q-swatch"></span> Q: approximation/model distribution</span>
                 </div>
 
-                <div class="kl-output">
+                <div class="kl-output" role="status" aria-live="polite" aria-atomic="true">
                     <strong id="kl-value">KL(P || Q): 0.0000</strong>
                     <span id="kl-explanation">
                         Q is close to P, so the information loss is low.
@@ -400,6 +414,11 @@ print(round(kl, 4))</code></pre>
             const kl = calculateKlDivergence(pDistribution, qDistribution);
 
             driftValue.textContent = `${driftSlider.value}%`;
+            driftSlider.setAttribute('aria-valuetext', `${driftSlider.value}% drift`);
+            document.querySelector('.kl-bars').setAttribute('aria-label',
+                'Probability distributions. ' + pDistribution.map((value, index) =>
+                    `Token ${index + 1}: P ${(value * 100).toFixed(1)}%, Q ${(qDistribution[index] * 100).toFixed(1)}%.`
+                ).join(' '));
             klValue.textContent = `KL(P || Q): ${kl.toFixed(4)}`;
 
             pDistribution.forEach((value, index) => {

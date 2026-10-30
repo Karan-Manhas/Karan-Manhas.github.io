@@ -1,3 +1,12 @@
+// Apply the saved palette before the page renders; midnight is the default.
+let savedTheme = 'dark';
+try {
+  savedTheme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+} catch {
+  // The site remains usable when browser storage is unavailable.
+}
+document.documentElement.dataset.theme = savedTheme;
+
 document.addEventListener('DOMContentLoaded', () => {
   // Scroll bar logic
   window.addEventListener('scroll', () => {
@@ -15,13 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('dark-mode-toggle');
   const body = document.body;
 
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-  }
+  const updateThemeButton = () => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    body.classList.toggle('dark-mode', isDark);
+    if (toggleBtn) {
+      toggleBtn.textContent = isDark ? '☀' : '☾';
+      toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      toggleBtn.title = toggleBtn.getAttribute('aria-label');
+    }
+  };
+  updateThemeButton();
 
   toggleBtn?.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    updateThemeButton();
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // Theme switching does not depend on persistence.
+    }
   });
 
   const terminal = document.getElementById('portfolio-terminal');
@@ -37,9 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const welcomeMessage = 'Portfolio terminal loaded.\nType "help" to see available commands.';
   const helpMessage = 'Available commands:\n\n* whoami\n* skills\n* projects\n* clear\n* exit\n* funky';
-  const whoamiMessage = 'Karan Manhas\nR&D Engineer\nAI | Cybersecurity | Software Engineering';
+  const whoamiMessage = 'Karan Manhas\nSenior Software Engineer\nAI | Cybersecurity | Data Engineering';
   const skillsMessage = 'Technical Skills:\n\n* Python\n* Go\n* C++\n* SQL\n* AWS\n* Docker\n* Airflow\n* Redshift\n* Machine Learning\n* Fine-Tuning\n* QLoRA\n* LLM Engineering\n* Cybersecurity\n* Computer Vision';
   let previouslyFocusedElement = null;
+  let inactiveElements = [];
 
   const appendOutput = (message, className = '') => {
     const entry = document.createElement('div');
@@ -50,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const getProjects = () => {
-    const projectItems = document.querySelectorAll('#case-studies li');
+    const projectItems = document.querySelectorAll('.selected-content, #case-studies li');
 
     return Array.from(projectItems).map((item) => {
-      const titleElement = item.querySelector('strong');
+      const titleElement = item.querySelector('h3, strong');
       const title = titleElement?.textContent.trim().replace(/:$/, '') || 'Untitled Project';
       const content = item.cloneNode(true);
 
-      content.querySelectorAll('i, strong, a, br').forEach((element) => element.remove());
+      content.querySelectorAll('.project-symbol, strong, h3, a, br, .eyebrow, .technical-notes-tags').forEach((element) => element.remove());
       const summary = content.textContent.replace(/\s+/g, ' ').trim();
 
       return `${title}\n${summary}`;
@@ -68,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     terminal.hidden = true;
     body.classList.remove('terminal-open');
     terminalLauncher.setAttribute('aria-expanded', 'false');
+    inactiveElements.forEach(element => { element.inert = false; });
+    inactiveElements = [];
     previouslyFocusedElement?.focus();
   };
 
@@ -86,6 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const openTerminal = () => {
     previouslyFocusedElement = document.activeElement;
+    inactiveElements = Array.from(body.children).filter(element => element !== terminal && !element.inert);
+    inactiveElements.forEach(element => { element.inert = true; });
     terminal.hidden = false;
     body.classList.add('terminal-open');
     terminalLauncher.setAttribute('aria-expanded', 'true');
@@ -134,6 +161,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-
-// KL Divergence  logic

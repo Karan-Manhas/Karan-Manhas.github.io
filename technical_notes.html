@@ -2,27 +2,44 @@
 <html lang="en">
 <head>
     <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karan Manhas | Technical Notes</title>
+    <meta name="description" content="Engineering notes by Karan Manhas on AI systems, machine learning, spectroscopy, and practical experiments.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://karan-manhas.github.io/technical_notes.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Karan Manhas">
+    <meta property="og:title" content="Karan Manhas | Technical Notes">
+    <meta property="og:description" content="Engineering notes by Karan Manhas on AI systems, machine learning, spectroscopy, and practical experiments.">
+    <meta property="og:url" content="https://karan-manhas.github.io/technical_notes.html">
+    <meta property="og:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Karan Manhas | Technical Notes">
+    <meta name="twitter:description" content="Engineering notes by Karan Manhas on AI systems, machine learning, spectroscopy, and practical experiments.">
+    <meta name="twitter:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta name="twitter:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="technical_notes.html">Technical Notes</a>
+        <a href="technical_notes.html" aria-current="page">Technical Notes</a>
     </nav>
-    <button id="dark-mode-toggle" title="Toggle dark mode">
-        <i class="fas fa-moon"></i> 
-    </button>
+    <button id="dark-mode-toggle" type="button" aria-label="Switch colour theme">☀</button>
 
-    <main class="technical-notes-container">
+    <main id="main-content" class="technical-notes-container" tabindex="-1">
 
-        <h1>Technical Notes</h1>
+        <p class="eyebrow">Field notes / Engineering in practice</p>
+        <h1>Behind the systems<span class="orange-dot">.</span></h1>
+        <p class="section-intro">Technical notes on experiments, trade-offs, and the lessons that make the next build better.</p>
 
         <div class="technical-notes-post">
             <h2>Lessons Learned Fine-Tuning LLMs Locally</h2>
@@ -58,6 +75,18 @@
             </p>
 
             <a href="notes/kl-divergence.html">Read More</a>
+        </div>
+
+        <div class="technical-notes-post">
+            <h2>Atmospheric Absorption &amp; Beer–Lambert’s Law</h2>
+            <div class="technical-notes-tags">
+                <span class="tag">BSc Research</span>
+                <span class="tag">R</span>
+                <span class="tag">Spectroscopy</span>
+            </div>
+            <p>How Beer–Lambert’s law relates pollutant concentration to light absorption,
+                alongside an overview of my atmospheric data analysis.</p>
+            <a href="notes/atmospheric-absorption.html">Read the research overview</a>
         </div>
 
         <!-- Models read tokens; curious humans may find /llm.txt -->

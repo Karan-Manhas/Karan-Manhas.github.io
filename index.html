@@ -4,11 +4,26 @@
 <head>
       <meta charset="UTF-8">
     <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 
     <title>Karan Manhas | AI, ML & Data Engineering Portfolio</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://karan-manhas.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Karan Manhas">
+    <meta property="og:title" content="Karan Manhas | AI, ML & Data Engineering Portfolio">
+    <meta property="og:description" content="Karan Manhas - Senior Software Engineer working across AI systems, cybersecurity, data engineering, cryptographic benchmarking, and developer tooling.">
+    <meta property="og:url" content="https://karan-manhas.github.io/">
+    <meta property="og:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Karan Manhas | AI, ML & Data Engineering Portfolio">
+    <meta name="twitter:description" content="Karan Manhas - Senior Software Engineer working across AI systems, cybersecurity, data engineering, cryptographic benchmarking, and developer tooling.">
+    <meta name="twitter:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta name="twitter:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
 
     <meta name="description"
           content="Karan Manhas - Senior Software Engineer working across AI systems, cybersecurity, data engineering, cryptographic benchmarking, and developer tooling.">
@@ -17,15 +32,15 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#container">Skip to content</a>
 
-    <nav>
-        <a href="index.html">Home</a>
+    <nav aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="#selected-work">Projects</a>
         <a href="technical_notes.html">Technical Notes</a>
     </nav>
 
-    <button id="dark-mode-toggle" title="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
+    <button id="dark-mode-toggle" type="button" aria-label="Switch colour theme">☀</button>
 
     <button id="terminal-launcher" type="button" aria-haspopup="dialog" aria-controls="portfolio-terminal">
         <span aria-hidden="true">&gt;_</span> Terminal
@@ -50,15 +65,58 @@
 
     <div id="scroll-bar"></div>
 
-    <div id="header">
-        <h1>
-            Karan Manhas - Portfolio
-            <img src="riolu.gif" alt="Portfolio Logo" id="portfolio-logo">
-        </h1>
-    </div>
+    <header id="header" class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Karan Manhas / Senior Software Engineer</p>
+            <h1>Intelligent systems.<br>Secure foundations.<br><span>Built to perform.</span></h1>
+            <p class="hero-description">I build practical software at the intersection of AI, security, and data engineering. From the first experiment to reliable systems.</p>
+            <div class="hero-actions">
+                <a class="case-study-button" href="#selected-work">Explore projects <span aria-hidden="true">↗</span></a>
+                <a class="secondary-button" href="technical_notes.html">Read technical notes <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-signature"><img src="riolu.gif" alt="Riolu, my portfolio mascot" id="portfolio-logo"><span>Curiosity-driven. Systems-minded.</span></div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true"><span class="orbit-core">KM<span>ENGINEERING / SYSTEMS</span></span><span class="orbit-label">AI · SECURITY · DATA</span></div>
+    </header>
 
-    <div id="container">
-<h2>About Me</h2>
+    <main id="container" tabindex="-1">
+<section id="selected-work" aria-labelledby="selected-title">
+  <p class="eyebrow">01 / Selected work</p>
+  <h2 id="selected-title">Ideas into working systems<span class="orange-dot">.</span></h2>
+  <p class="section-intro">Three projects across intelligent tooling, cryptography, and connected devices.</p>
+  <div class="selected-grid">
+    <article class="selected-card">
+      <div class="project-visual pipeline-visual" role="img" aria-label="Workflow schematic: pull request, diffs and history, structured summary">
+        <span class="visual-label">WORKFLOW / SCHEMATIC</span>
+        <span class="pipeline-step">01 <b>Pull request</b></span><span class="pipeline-step">02 <b>Diffs + history</b></span><span class="pipeline-step">03 <b>Structured summary</b></span>
+      </div>
+      <div class="selected-content"><p class="eyebrow">AI / Developer tooling</p><h3>MCP PR Agent</h3><p>Turning GitHub diffs and commit history into structured, LLM-assisted pull request summaries.</p><div class="technical-notes-tags"><span class="tag">MCP</span><span class="tag">LLMs</span><span class="tag">GitHub</span></div><a href="https://github.com/Karan-Manhas/model_context_protocol_mvp">Explore the code <span aria-hidden="true">↗</span></a></div>
+    </article>
+    <article class="selected-card featured-card">
+      <div class="project-visual crypto-visual" role="img" aria-label="Benchmark scope: ML-KEM and ECDH compared across time, memory, and system performance">
+        <span class="visual-label">BENCHMARK / SCOPE</span><div class="crypto-pair"><b>ML-KEM</b><span>vs.</span><b>ECDH</b></div><div class="metric-labels"><span>TIME</span><span>MEMORY</span><span>SYSTEM</span></div>
+      </div>
+      <div class="selected-content">
+        <p class="eyebrow">MSc research / Cryptography</p>
+        <h3>CryptoMetrics &amp; CryptoGrubbs</h3>
+        <p>My MSc research compared ML-KEM/Kyber with ECDH in distributed environments. CryptoMetrics benchmarked execution time, memory, and system performance; CryptoGrubbs applied Grubbs’ test to identify outliers.</p>
+        <div class="technical-notes-tags"><span class="tag">C++</span><span class="tag">OpenSSL</span><span class="tag">liboqs</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">AWS</span></div>
+        <a href="https://github.com/Karan-Manhas/CryptoMetricsOfficial">CryptoMetrics code <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/Karan-Manhas/crypto-grubbs-py">CryptoGrubbs code <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+    <article class="selected-card">
+      <div class="project-visual telemetry-visual" role="img" aria-label="Architecture schematic: ESP32 exposes health, WiFi, memory, and runtime through HTTP">
+        <span class="visual-label">TELEMETRY / ARCHITECTURE</span><b class="device-node">ESP32 <span>HTTP endpoints</span></b><div class="telemetry-nodes"><span>HEALTH</span><span>WIFI</span><span>MEMORY</span><span>RUNTIME</span></div>
+      </div>
+      <div class="selected-content"><p class="eyebrow">Embedded / Observability</p><h3>Network Telemetry</h3><p>Making device health visible with lightweight HTTP endpoints and a local diagnostics dashboard.</p><div class="technical-notes-tags"><span class="tag">ESP32</span><span class="tag">HTTP</span><span class="tag">Telemetry</span></div><a href="https://github.com/Karan-Manhas/network-telemetry-node">Explore the code <span aria-hidden="true">↗</span></a></div>
+    </article>
+  </div>
+</section>
+
+<section class="about-section" aria-labelledby="about-title">
+<p class="eyebrow">02 / Approach</p>
+<h2 id="about-title">Engineering with intent.</h2>
 
 <p>
   <strong>Hi, I’m Karan </strong> a Senior Software Engineer focused on
@@ -77,95 +135,59 @@
   security, performance, and operational reliability matter.
 </p>
 
-<h2>Featured Projects</h2>
+</section>
+
+<p class="eyebrow">03 / Project archive</p>
+<h2>More explorations.</h2>
 
 <div id="case-studies">
 
   <h3>AI, Security & Developer Tooling</h3>
   <ul>
     <li>
-      <i class="fas fa-project-diagram"></i>
-      <strong>Model Context Protocol Agent:</strong>
-      Built an MCP-based GitHub pull request summariser that parses diffs and commit history
-      to generate structured PR summaries using LLM-assisted workflows.
-      <br>
-      <a class="case-study-button" href="https://github.com/Karan-Manhas/model_context_protocol_mvp" target="_blank">View Code on GitHub</a>
-    </li>
-
-    <li>
-      <i class="fas fa-terminal"></i>
+      <span class="project-symbol" aria-hidden="true">&gt;_</span>
       <strong>Natural Language to SQL Agent:</strong>
       Built an agent-based application using the OpenAI Agents SDK, Redshift, and Streamlit
       to convert natural language questions into governed SQL queries and return warehouse-backed insights.
     </li>
 
     <li>
-      <i class="fas fa-vector-square"></i>
+      <span class="project-symbol" aria-hidden="true">◇</span>
       <strong>Vector Search R&D Environment:</strong>
       Set up a containerised PostgreSQL and pgvector environment for semantic search experimentation,
       retrieval workflows, and local AI development.
     </li>
   </ul>
 
-  <h3>Cryptography, Benchmarking & Statistical Analysis</h3>
-  <ul>
-    <li>
-      <i class="fas fa-lock"></i>
-      <strong>CryptoMetrics:</strong>
-      Implemented and evaluated post-quantum and classical cryptographic algorithms using C++, OpenSSL,
-      liboqs, Python, and R. Benchmarked ML-KEM/Kyber against ECDH across execution time, memory usage,
-      and system-level performance characteristics.
-      <br>
-      <a class="case-study-button" href="https://github.com/Karan-Manhas/CryptoMetricsOfficial" target="_blank">View Code on GitHub</a>
-    </li>
-
-    <li>
-      <i class="fas fa-chart-line"></i>
-      <strong>CryptoGrubbs:</strong>
-      Built a statistical analysis tool for cryptographic benchmarking data, applying Grubbs’ test
-      to detect outliers and improve the reliability of experimental performance measurements.
-      <br>
-      <a class="case-study-button" href="https://github.com/Karan-Manhas/crypto-grubbs-py" target="_blank">View Code on GitHub</a>
-    </li>
-  </ul>
-
   <h3>Data Engineering & Systems</h3>
   <ul>
     <li>
-      <i class="fas fa-cloud"></i>
+      <span class="project-symbol" aria-hidden="true">☁</span>
       <strong>Serverless ETL Implementations:</strong>
       Designed AWS Lambda-based ETL workflows supporting operational reporting across multiple users
       and organisations, with scheduled execution for time-sensitive business processes.
     </li>
 
     <li>
-      <i class="fas fa-database"></i>
+      <span class="project-symbol" aria-hidden="true">▤</span>
       <strong>Kimball Data Modelling:</strong>
       Designed dimensional models in Redshift to support enterprise analytics, reporting consistency,
       and downstream BI use cases.
     </li>
 
     <li>
-      <i class="fas fa-code"></i>
+      <span class="project-symbol" aria-hidden="true">&lt;/&gt;</span>
       <strong>Flask and Redshift Dashboards:</strong>
       Built internal dashboards and APIs using Flask, Docker, and Redshift for monitoring operational
       and data warehouse resources.
     </li>
 
-    <li>
-      <i class="fas fa-wifi"></i>
-      <strong>Network Telemetry Node:</strong>
-      Built an ESP32-based telemetry node exposing health, WiFi, memory, and runtime diagnostics through
-      lightweight HTTP endpoints and a local dashboard.
-      <br>
-      <a class="case-study-button" href="https://github.com/Karan-Manhas/network-telemetry-node" target="_blank">View Code on GitHub</a>
-    </li>
   </ul>
 
   <h3>Applied Machine Learning</h3>
   <ul>
     <li>
-      <i class="fas fa-envelope"></i>
+      <span class="project-symbol" aria-hidden="true">✉</span>
       <strong>Spam Classifier:</strong>
       Built a probabilistic NLP classifier using Naive Bayes and Laplace smoothing, achieving 85%
       classification accuracy on a held-out test set.
@@ -174,23 +196,23 @@
     </li>
 
     <li>
-      <i class="fas fa-user"></i>
+      <span class="project-symbol" aria-hidden="true">◎</span>
       <strong>Age and Gender Classification:</strong>
       Designed CNN and ResNet50-based models for simultaneous gender classification and age regression,
       comparing custom and transfer-learning approaches.
     </li>
 
     <li>
-      <i class="fas fa-image"></i>
-      <strong>Tyre Image Classification Pipeline:</strong>
-      Developed an image-processing pipeline using OCR and feature extraction to classify tyre markings.
+      <span class="project-symbol" aria-hidden="true">▧</span>
+      <strong>Tyre Image Analysis:</strong>
+      Used Python, OCR, and image processing for tyre inspection in 2025.
     </li>
   </ul>
 
   <h3>Applications & Tools</h3>
   <ul>
     <li>
-      <i class="fas fa-clock"></i>
+      <span class="project-symbol" aria-hidden="true">◷</span>
       <strong>ScreenTimeMonitor:</strong>
       Browser-based productivity tracker using HTML, JavaScript, Plotly.js, localStorage, and responsive
       visualisation for local screen-time analysis.
@@ -200,7 +222,7 @@
     </li>
 
     <li>
-      <i class="fas fa-calculator"></i>
+      <span class="project-symbol" aria-hidden="true">±</span>
       <strong>SRPN Calculator:</strong>
       Stack-based Reverse Polish Notation calculator implemented as a technical exercise in parsing,
       state management, and deterministic computation.
@@ -212,23 +234,19 @@
   <h3>Academic Research</h3>
   <ul>
     <li>
-      <i class="fas fa-lock"></i>
-      <strong>MSc Dissertation: Post-Quantum Cryptography:</strong>
-      Evaluated post-quantum and classical key exchange mechanisms in distributed environments using C++,
-      OpenSSL, liboqs, Python, R, and AWS-based benchmarking.
-    </li>
-
-    <li>
-      <i class="fas fa-cloud-sun"></i>
+      <span class="project-symbol" aria-hidden="true">☀</span>
       <strong>BSc Dissertation: Atmospheric Chemistry & Physics:</strong>
-      Analysed seven years of DOAS atmospheric spectral data using R, applying time-series decomposition,
-      regression, smoothing, and statistical modelling to pollutant concentration trends.
+      Analysed seven years of DOAS spectral data in R, using Beer–Lambert’s law to relate
+      pollutant concentration and light absorption.
+      <p class="absorption-equation">I = I<sub>0</sub> exp(−σnL)</p>
+      <a class="case-study-button" href="notes/atmospheric-absorption.html">Read the research overview</a>
     </li>
   </ul>
 
 </div>
 
-<h2>Skills</h2>
+<p class="eyebrow">04 / Toolkit</p>
+<h2>Tools for the problem.</h2>
 
 <ul>
   <li><strong>Languages:</strong> Python, Go, C++, JavaScript, Java, SQL, Rust, Haskell</li>
@@ -238,7 +256,16 @@
   <li><strong>Security & Cryptography:</strong> OpenSSL, liboqs, post-quantum cryptography, benchmarking, statistical validation</li>
 </ul>
 
-</div> <!-- container -->
+</main>
+
+<footer class="site-footer">
+  <p class="eyebrow">Keep exploring</p>
+  <h2>The thinking behind the building.</h2>
+  <p>Experiments, engineering trade-offs, and lessons from working systems.</p>
+  <a class="case-study-button" href="technical_notes.html">Read technical notes <span aria-hidden="true">↗</span></a>
+  <a class="footer-github" href="https://github.com/Karan-Manhas">Find me on GitHub <span aria-hidden="true">↗</span></a>
+  <p class="footer-signature">Karan Manhas / AI · Security · Data</p>
+</footer>
 
 </body>
 </html>

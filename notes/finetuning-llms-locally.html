@@ -3,30 +3,44 @@
 <head>
 
     <script src="../script.js"></script>
-    <script src="https://kit.fontawesome.com/4444399347.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lessons Learned when Fine-Tuning LLMs Locally | Karan Manhas</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://karan-manhas.github.io/notes/finetuning-llms-locally.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Karan Manhas">
+    <meta property="og:title" content="Lessons Learned when Fine-Tuning LLMs Locally | Karan Manhas">
+    <meta property="og:description" content="Practical engineering notes from fine-tuning LLMs locally with QLoRA, quantisation, CUDA, adapter size, dataset quality, and evaluation trade-offs.">
+    <meta property="og:url" content="https://karan-manhas.github.io/notes/finetuning-llms-locally.html">
+    <meta property="og:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lessons Learned when Fine-Tuning LLMs Locally | Karan Manhas">
+    <meta name="twitter:description" content="Practical engineering notes from fine-tuning LLMs locally with QLoRA, quantisation, CUDA, adapter size, dataset quality, and evaluation trade-offs.">
+    <meta name="twitter:image" content="https://karan-manhas.github.io/social-card.png">
+    <meta name="twitter:image:alt" content="Karan Manhas — Senior Software Engineer. AI, security, and data engineering.">
     <meta name="description" content="Practical engineering notes from fine-tuning LLMs locally with QLoRA, quantisation, CUDA, adapter size, dataset quality, and evaluation trade-offs.">
 
     <link rel="stylesheet" href="../style.css">
 
 </head>
 <body>
-    <button id="dark-mode-toggle" title="Toggle dark mode">
-        <i class="fas fa-moon"></i> 
-    </button>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <button id="dark-mode-toggle" type="button" aria-label="Switch colour theme">☀</button>
     <div id="scroll-bar"></div>
 
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="../index.html">Home</a>
         <a href="../technical_notes.html">Technical Notes</a>
     </nav>
 
-    <main class="note-article">
+    <main id="main-content" class="note-article" tabindex="-1">
         <header>
             <p class="note-meta">Technical Note · May 2026 · LLMs / QLoRA / AI Engineering</p>
             <h1>Lessons Learned when Fine-Tuning LLMs Locally</h1>

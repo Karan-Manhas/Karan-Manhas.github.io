@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#163467"/><stop offset="1" stop-color="#050608"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#050608"/>
+  <ellipse cx="1020" cy="250" rx="650" ry="500" fill="url(#glow)"/>
+  <circle cx="1030" cy="260" r="170" fill="none" stroke="#27334b" stroke-width="2"/>
+  <circle cx="1030" cy="260" r="125" fill="none" stroke="#27334b" stroke-dasharray="5 8"/>
+  <circle cx="1130" cy="122" r="9" fill="#ff7a24"/>
+  <g font-family="Arial, sans-serif">
+    <text x="80" y="115" fill="#ff7a24" font-size="21" letter-spacing="3">SENIOR SOFTWARE ENGINEER</text>
+    <text x="76" y="235" fill="#f4f6fa" font-size="82" font-weight="700" letter-spacing="-3">Karan Manhas</text>
+    <text x="80" y="335" fill="#f4f6fa" font-size="46" font-weight="700">Intelligent systems.</text>
+    <text x="80" y="398" fill="#ff7a24" font-size="46" font-weight="700">Secure foundations.</text>
+    <text x="80" y="485" fill="#a8b0c0" font-size="25">AI · Security · Data engineering</text>
+    <text x="80" y="570" fill="#a8b0c0" font-size="20">karan-manhas.github.io</text>
+  </g>
+</svg>
