@@ -34,6 +34,15 @@ The site is intentionally lightweight and built using vanilla.
 
 This portfolio uses GitHub Actions to validate HTML structure and check links on each push or pull request to `main`.
 
+CI also checks JavaScript syntax and internal link fragments. Absolute URLs for this
+portfolio are mapped to files in the checkout, so new research pages and sharing
+assets can be validated before GitHub Pages publishes them. Links to other projects
+are still checked online. The link report is printed in the job log and summary.
+
+The stylesheet and script URLs include a version query to refresh browser caches
+after visual changes. When changing either asset, update its version consistently
+in all five HTML pages. Preview with Live Server or `python -m http.server 8000`.
+
 The site is deployed through GitHub Pages.
 
 
