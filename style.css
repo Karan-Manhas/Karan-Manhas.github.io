@@ -200,20 +200,6 @@ nav a:hover {
   --glow-color: rgba(56, 116, 255, 0.18);
 }
 
-:root[data-theme="light"] {
-  color-scheme: light;
-  --bg-color: #f5f6fa;
-  --text-color: #101b35;
-  --card-bg-color: #ffffff;
-  --accent-color: #b74300;
-  --button-bg: #ff7a24;
-  --button-text: #080e20;
-  --muted-color: #505d73;
-  --border-color: #ccd4e2;
-  --link-color: #244eb0;
-  --glow-color: rgba(56, 116, 255, 0.1);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -258,7 +244,7 @@ nav {
   display: flex;
   justify-content: flex-start;
   gap: 30px;
-  padding: 20px 76px 20px 28px;
+  padding: 20px 28px;
   max-width: 1160px;
   margin: 0 auto;
   align-items: center;
@@ -278,21 +264,6 @@ nav a {
 nav a[aria-current="page"] {
   color: var(--accent-color);
   box-shadow: 0 2px var(--accent-color);
-}
-
-#dark-mode-toggle {
-  position: fixed;
-  top: 22px;
-  right: max(20px, calc((100vw - 1104px) / 2));
-  background: var(--card-bg-color);
-  border: 1px solid var(--border-color);
-  font-size: 1.35rem;
-  cursor: pointer;
-  z-index: 1000;
-  color: var(--text-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 #scroll-bar {

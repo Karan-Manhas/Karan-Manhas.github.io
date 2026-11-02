@@ -1,12 +1,3 @@
-// Apply the saved palette before the page renders; midnight is the default.
-let savedTheme = 'dark';
-try {
-  savedTheme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
-} catch {
-  // The site remains usable when browser storage is unavailable.
-}
-document.documentElement.dataset.theme = savedTheme;
-
 document.addEventListener('DOMContentLoaded', () => {
   // Scroll bar logic
   window.addEventListener('scroll', () => {
@@ -20,31 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Dark mode toggle logic
-  const toggleBtn = document.getElementById('dark-mode-toggle');
   const body = document.body;
-
-  const updateThemeButton = () => {
-    const isDark = document.documentElement.dataset.theme === 'dark';
-    body.classList.toggle('dark-mode', isDark);
-    if (toggleBtn) {
-      toggleBtn.textContent = isDark ? '☀' : '☾';
-      toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-      toggleBtn.title = toggleBtn.getAttribute('aria-label');
-    }
-  };
-  updateThemeButton();
-
-  toggleBtn?.addEventListener('click', () => {
-    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = theme;
-    updateThemeButton();
-    try {
-      localStorage.setItem('theme', theme);
-    } catch {
-      // Theme switching does not depend on persistence.
-    }
-  });
 
   const terminal = document.getElementById('portfolio-terminal');
   const terminalLauncher = document.getElementById('terminal-launcher');
